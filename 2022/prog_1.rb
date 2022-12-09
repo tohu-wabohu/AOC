@@ -35,3 +35,69 @@ puts "sum3: " + sum3.to_s
 
 #puts "max_sum: " + MAX.to_s
 #pp E
+
+
+# PART 2
+puts "--------------------------------------"
+
+A = [] # Main array
+#File.open("input_2_sample.txt", "r").each_line do |line|
+File.open("input_2.txt", "r").each_line do |line|
+  puts line
+  A << line.gsub("\n","").split
+end
+
+pp A
+
+REZ = []
+puts A.length
+for i in A
+  if i[1] == "X"
+    REZ << 1
+  elsif i[1] == "Y"
+    REZ << 2
+  elsif i[1] == "Z"
+    REZ << 3
+  end
+
+  if (i[0] == "A" and i[1] == "X") or (i[0] == "B" and i[1] == "Y") or (i[0] == "C" and i[1] == "Z")
+    REZ << 3
+  elsif (i[0] == "A" and i[1] == "Y") or (i[0] == "B" and i[1] == "Z") or (i[0] == "C" and i[1] == "X")
+    REZ << 6
+  elsif (i[0] == "A" and i[1] == "Z") or (i[0] == "B" and i[1] == "X") or (i[0] == "C" and i[1] == "Y")
+    REZ << 0
+  end
+end
+
+pp REZ
+
+sum = 0
+for i in REZ
+  #puts i
+  sum = sum + i
+end
+
+pp sum
+
+# A X - Rock - 1
+# B Y - Paper - 2
+# C Z - Scissors - 3
+#
+# Lost - 0
+# Draw - 3
+# Win - 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
